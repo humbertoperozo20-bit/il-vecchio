@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Il Vecchio AR</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; background: #FAF9F6; overflow-x: hidden; }
+        .menu-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .menu-img { width: 100%; height: auto; display: block; max-width: 1080px; }
+        svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+        .area-ar { fill: rgba(0, 0, 0, 0); cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent; }
+        .area-ar:active { fill: rgba(139, 69, 19, 0.2); }
+        model-viewer { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="menu-wrapper">
+    <img src="menu_completo_ar.jpg" id="imgMenu" class="menu-img">
+    <svg id="capaBotones" viewBox="0 0 1080 2890" preserveAspectRatio="xMinYMin meet">
+        <circle class="area-ar" cx="478" cy="113" r="25" onclick="lanzarAR('plato1')" />
+        <circle class="area-ar" cx="478" cy="132" r="25" onclick="lanzarAR('plato2')" />
+        <circle class="area-ar" cx="478" cy="156" r="25" onclick="lanzarAR('plato3')" />
+        <circle class="area-ar" cx="478" cy="541" r="30" onclick="lanzarAR('plato4')" />
+    </svg>
+</div>
+
+<model-viewer id="visor" ar ar-modes="quick-look scene-viewer"></model-viewer>
+
+<script>
+    function lanzarAR(modelo) {
+        const v = document.getElementById('visor');
+        v.src = modelo + '.glb';
+        v.iosSrc = modelo + '.usdz';
+        setTimeout(() => { v.activateAR(); }, 150);
+    }
+    window.onload = function() {
+        const img = document.getElementById('imgMenu');
+        const svg = document.getElementById('capaBotones');
+        const ajustar = () => {
+            svg.style.width = img.offsetWidth + "px";
+            svg.style.height = img.offsetHeight + "px";
+        };
+        ajustar();
+        window.addEventListener('resize', ajustar);
+        setTimeout(ajustar, 1000);
+    };
+</script>
+</body>
+</html>
