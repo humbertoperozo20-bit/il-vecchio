@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IL VECCHIO AR TEST</title>
+    <title>Il Vecchio AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         body { margin: 0; background: #FAF9F6; display: flex; justify-content: center; }
@@ -19,10 +19,10 @@
             pointer-events: none; 
         }
         .boton-ar { 
-            fill: rgba(255, 0, 0, 0.5); 
+            fill: rgba(0, 0, 0, 0); /* Invisible */
             pointer-events: auto; 
             cursor: pointer;
-            -webkit-tap-highlight-color: rgba(255,0,0,0.8);
+            -webkit-tap-highlight-color: rgba(139, 69, 19, 0.3); /* Destello café al tocar */
         }
         model-viewer { display: none; }
     </style>
@@ -32,10 +32,13 @@
 <div class="contenedor">
     <img src="menu_completo_ar.jpg">
     <svg viewBox="0 0 1080 2890">
-        <circle class="boton-ar" cx="475" cy="115" r="30" onclick="lanzarAR('plato1')" />
-        <circle class="boton-ar" cx="475" cy="135" r="30" onclick="lanzarAR('plato2')" />
-        <circle class="boton-ar" cx="475" cy="158" r="30" onclick="lanzarAR('plato3')" />
-        <circle class="boton-ar" cx="240" cy="545" r="40" onclick="lanzarAR('plato4')" />
+        <circle class="boton-ar" cx="465" cy="305" r="30" onclick="lanzarAR('plato1')" />
+        
+        <circle class="boton-ar" cx="465" cy="365" r="30" onclick="lanzarAR('plato2')" />
+        
+        <circle class="boton-ar" cx="465" cy="425" r="30" onclick="lanzarAR('plato3')" />
+
+        <circle class="boton-ar" cx="465" cy="1580" r="40" onclick="lanzarAR('plato4')" />
     </svg>
 </div>
 
@@ -46,7 +49,7 @@
         const v = document.getElementById('visor');
         v.src = m + '.glb';
         v.iosSrc = m + '.usdz';
-        setTimeout(() => { v.activateAR(); }, 100);
+        v.activateAR();
     }
 </script>
 
