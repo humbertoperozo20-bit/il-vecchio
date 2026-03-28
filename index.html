@@ -19,26 +19,25 @@
             pointer-events: none; 
         }
         .boton-ar { 
-            fill: rgba(0, 0, 0, 0); /* Invisible */
+            fill: rgba(0, 0, 0, 0); 
             pointer-events: auto; 
             cursor: pointer;
-            -webkit-tap-highlight-color: rgba(139, 69, 19, 0.3); /* Destello café al tocar */
+            -webkit-tap-highlight-color: transparent;
         }
-        model-viewer { display: none; }
     </style>
 </head>
 <body>
 
 <div class="contenedor">
     <img src="menu_completo_ar.jpg">
-    <svg viewBox="0 0 1080 2890">
-        <circle class="boton-ar" cx="465" cy="305" r="30" onclick="lanzarAR('plato1')" />
+    <svg viewBox="0 0 1080 2890" preserveAspectRatio="xMinYMin meet">
+        <circle class="boton-ar" cx="466" cy="196" r="22" onclick="lanzarAR('plato1')" />
         
-        <circle class="boton-ar" cx="465" cy="365" r="30" onclick="lanzarAR('plato2')" />
+        <circle class="boton-ar" cx="466" cy="227" r="22" onclick="lanzarAR('plato2')" />
         
-        <circle class="boton-ar" cx="465" cy="425" r="30" onclick="lanzarAR('plato3')" />
+        <circle class="boton-ar" cx="466" cy="253" r="22" onclick="lanzarAR('plato3')" />
 
-        <circle class="boton-ar" cx="465" cy="1580" r="40" onclick="lanzarAR('plato4')" />
+        <circle class="boton-ar" cx="466" cy="728" r="22" onclick="lanzarAR('plato4')" />
     </svg>
 </div>
 
@@ -49,7 +48,7 @@
         const v = document.getElementById('visor');
         v.src = m + '.glb';
         v.iosSrc = m + '.usdz';
-        v.activateAR();
+        setTimeout(() => { v.activateAR(); }, 100);
     }
 </script>
 
